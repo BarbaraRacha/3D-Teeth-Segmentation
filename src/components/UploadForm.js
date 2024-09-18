@@ -36,9 +36,9 @@ function UploadForm({ onModelLoaded }) {
                 type="file"
                 onChange={handleFileChange}
                 inputProps={{ accept: '.obj,.json' }}
-                style={{ flex: 1 }}
+                style={{ flex: 1, backgroundColor: "white" }}
             />
-            <Button type="submit" variant="contained" color="primary">
+            <Button sx={{height: 55, width: 150, fontSize: 17}} type="submit" variant="contained" color="primary">
                 Upload
             </Button>
         </form>
