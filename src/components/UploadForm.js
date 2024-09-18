@@ -22,10 +22,21 @@ function UploadForm() {
                 type="file"
                 onChange={handleFileChange}
                 inputProps={{ accept: '.obj,.json' }}
+                sx={{
+                    backgroundColor: 'white', // Couleur de fond fixe
+                    input: {
+                        color: '#000', // Couleur du texte de l'input
+                    },
+                    '& .MuiInputBase-root': {
+                        backgroundColor: 'white', // Arrière-plan de l'input
+                    },
+                    width:760
+                }}
             />
-            <Button type="submit" variant="contained" color="primary">
+            <Button sx={{ height: 55, width: 200, fontSize: 17, marginLeft: 5 }} type="submit" variant="contained" color="primary">
                 Upload
             </Button>
+
         </form>
     );
 }
