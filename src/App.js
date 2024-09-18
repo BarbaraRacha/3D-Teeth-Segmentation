@@ -1,19 +1,21 @@
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import UploadForm from './components/UploadForm';
-import TeethViewer from './components/TeethViewer';
-import SegmentationResults from './components/SegmentationResults';
-import { Container } from '@mui/material';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; // Import Router components
+import UploadViewComponent from './components/UploadViewComponent';
 import Contact from './components/Contact';
 
 function App() {
-    const [themeMode, setThemeMode] = useState('light');
+    // const [model, setModel] = useState(null);  // Pour gérer le modèle 3D
+    const [themeMode, setThemeMode] = useState('light');  // Pour le thème
 
+    // Gestion du thème avec localStorage
     useEffect(() => {
+        // Lire le thème sauvegardé ou utiliser un thème par défaut
         const savedTheme = localStorage.getItem('theme') || 'light';
         setThemeMode(savedTheme);
         document.body.className = savedTheme;
+
+        // Pas besoin de nettoyage ici
     }, []);
 
     const changeThemeMode = (mode) => {
@@ -22,28 +24,30 @@ function App() {
         document.body.className = mode;
     };
 
-    // Define style based on themeMode
+    // Style de l'application basé sur le thème
     const appStyles = {
         backgroundColor: themeMode === 'dark' ? '#333' : '#fff',
         color: themeMode === 'dark' ? '#fff' : '#000',
         minHeight: '100vh',
     };
 
+    // Fonction appelée lorsque le modèle est chargé
+    // const handleModelLoaded = (loadedModel) => {
+    //     setModel(loadedModel);
+    // };
+
     return (
-        <Router> {/* Add Router component here */}
+        <Router>
             <div style={appStyles}>
+                {/* Navbar avec gestion du thème */}
                 <Navbar themeMode={themeMode} changeThemeMode={changeThemeMode} />
+
+                {/* Routes pour la navigation */}
                 <Routes>
-                    {/* Other routes */}
+                    <Route path="/" element={<UploadViewComponent />} />
                     <Route path="/contact" element={<Contact />} />
+                    <Route path="/home" element={<UploadViewComponent />} />
                 </Routes>
-                <Container sx={{marginTop: 10}}>
-                    <h1>3D Teeth Segmentation</h1>
-                    <UploadForm /*themeMode={themeMode} *//>
-                    <br></br>
-                    <TeethViewer /*themeMode={themeMode}*/ />
-                    <SegmentationResults />
-                </Container>
             </div>
         </Router>
     );

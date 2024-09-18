@@ -59,7 +59,10 @@ function Navbar({ themeMode, changeThemeMode }) { // Recevoir changeThemeMode co
                 <div>
                     {/* Boutons de navigation */}
                     <Button sx={{ color: themeMode === 'dark' ? '#fff' : '#333', fontSize: 18, marginLeft: -100, fontFamily: 'Verdana' }}>
-                        <Home sx={{ marginRight: 1 }} /> Home
+                        <Home sx={{ marginRight: 1 }} />
+                        <Link to="/home" style={{ color: 'inherit', textDecoration: 'none' }}>
+                            Home
+                        </Link>
                     </Button>
                     <Button sx={{ color: themeMode === 'dark' ? '#fff' : '#333', fontSize: 18, marginLeft: 10, fontFamily: 'Verdana' }}>
                         <Description sx={{ marginRight: 1 }} /> Docs
@@ -68,8 +71,9 @@ function Navbar({ themeMode, changeThemeMode }) { // Recevoir changeThemeMode co
                         <Info sx={{ marginRight: 1 }} /> About
                     </Button>
                     <Button sx={{ color: themeMode === 'dark' ? '#fff' : '#333', fontSize: 18, marginLeft: 10, fontFamily: 'Verdana' }}>
+                        <ContactMail sx={{ marginRight: 1 }} />
                         <Link to="/contact" style={{ color: 'inherit', textDecoration: 'none' }}> {/* Ensure proper link styling */}
-                            <ContactMail sx={{ marginRight: 1 }} /> Contact
+                            Contact
                         </Link>
                     </Button>
                 </div>

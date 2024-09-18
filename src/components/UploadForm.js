@@ -1,42 +1,46 @@
 import React, { useState } from 'react';
 import { Button, TextField } from '@mui/material';
+import * as THREE from 'three';
+import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader';
 
-function UploadForm() {
+function UploadForm({ onModelLoaded }) {
     const [file, setFile] = useState(null);
 
     const handleFileChange = (event) => {
         setFile(event.target.files[0]);
     };
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
         if (file) {
             console.log('Fichier téléchargé :', file);
-            // Logique pour envoyer le fichier au backend ou le traiter directement
+
+            // Lire le fichier et le charger avec OBJLoader
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                const objLoader = new OBJLoader();
+                const text = e.target.result;
+                const object = objLoader.parse(text);
+                console.log('Objet chargé :', object);
+
+                // Passer l'objet chargé au composant parent
+                onModelLoaded(object);
+            };
+            reader.readAsText(file);
         }
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
             <TextField
                 type="file"
                 onChange={handleFileChange}
                 inputProps={{ accept: '.obj,.json' }}
-                sx={{
-                    backgroundColor: 'white', // Couleur de fond fixe
-                    input: {
-                        color: '#000', // Couleur du texte de l'input
-                    },
-                    '& .MuiInputBase-root': {
-                        backgroundColor: 'white', // Arrière-plan de l'input
-                    },
-                    width:760
-                }}
+                style={{ flex: 1 }}
             />
-            <Button sx={{ height: 55, width: 200, fontSize: 17, marginLeft: 5 }} type="submit" variant="contained" color="primary">
+            <Button type="submit" variant="contained" color="primary">
                 Upload
             </Button>
-
         </form>
     );
 }
