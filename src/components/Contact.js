@@ -81,7 +81,7 @@ const Contact = () => {
             </form>
 
             <Box textAlign="center" sx={{marginTop: 5}}>
-                <Typography variant="h5">Please feel free to get in touch with us !</Typography>
+                <Typography variant="h5">Feel free to get in touch with us !</Typography>
             </Box>
 
             <br/>
