@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
+import Home from './components/Home';
 import Footer from './components/Footer';
 import UploadViewComponent from './components/UploadViewComponent';
 import Contact from './components/Contact';
@@ -46,7 +47,7 @@ function App() {
                 {/* Routes pour la navigation */}
                 <Routes>
                     <Route path="/contact" element={<Contact />} />
-                    <Route path="/home" element={<UploadViewComponent />} />
+                    <Route path="/home" element={<Home />} />
                 </Routes>
                 <br></br>
                 <Footer />
