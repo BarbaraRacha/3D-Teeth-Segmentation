@@ -5,6 +5,12 @@ import img_home from '../images/img_home.webp';
 const Home = () => {
     const [isHovered, setIsHovered] = useState(false);
 
+    // Fonction pour faire défiler jusqu'à la section du panel bleu
+    const scrollToPanel = () => {
+        const panelSection = document.getElementById('blue-panel');
+        panelSection.scrollIntoView({ behavior: 'smooth' });
+    };
+
     // Les styles pour chaque section
     const styles = {
         whyTeethSeg: {
@@ -31,7 +37,9 @@ const Home = () => {
             paddingTop: '50px',
             paddingBottom: '50px',
             paddingLeft: '150px',
-            paddingRight: '150px'
+            paddingRight: '150px',
+            height: 450,
+            marginTop: 40
         },
         content: {
             maxWidth: '600px',
@@ -63,12 +71,14 @@ const Home = () => {
             textAlign: 'right',
         },
         image: {
-            width: '300px',
+            width: '400px',
         },
         panel: {
             backgroundColor: '#0078d7', // Bleu
             padding: '50px',
             textAlign: 'center',
+            marginTop: 180,
+            marginBottom: 160
         },
         textContainer: {
             display: 'inline-block',
@@ -131,10 +141,12 @@ const Home = () => {
                     <p style={styles.description}>
                         TeethSeg revolutionizes dental care with cutting-edge AI technology. Our advanced platform simplifies 3D tooth segmentation, providing faster and more precise results for orthodontic professionals. Step into the future of dental innovation with TeethSeg, where efficiency meets accuracy.
                     </p>
+                    <br />
                     <button
                         style={{ ...styles.button, ...(isHovered ? styles.buttonHover : {}) }}
                         onMouseEnter={() => setIsHovered(true)}
                         onMouseLeave={() => setIsHovered(false)}
+                        onClick={scrollToPanel} // Ajout de l'événement pour faire défiler vers le panel bleu
                     >
                         Get started &nbsp;&nbsp;>
                     </button>
@@ -145,7 +157,7 @@ const Home = () => {
             </section>
 
             {/* Section 2: Animated Panel */}
-            <div style={styles.panel}>
+            <div id="blue-panel" style={styles.panel}> {/* Ajout de l'id "blue-panel" */}
                 <div style={styles.textContainer}>
                     <p style={styles.animatedText}>
                         Ready for the takeoff? Dentbird puts wings on your solution.
