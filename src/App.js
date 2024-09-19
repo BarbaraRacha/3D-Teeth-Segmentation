@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import UploadViewComponent from './components/UploadViewComponent';
 import Contact from './components/Contact';
+import AboutUs from './components/AboutUs'; // Import du composant AboutUs
 
 function App() {
     // const [model, setModel] = useState(null);  // Pour gérer le modèle 3D
@@ -46,7 +47,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<UploadViewComponent />} />
                     <Route path="/contact" element={<Contact />} />
-                    <Route path="/home" element={<UploadViewComponent />} />
+                    <Route path="/about" element={<AboutUs />} /> {/* Nouvelle route About Us */}
                 </Routes>
             </div>
         </Router>
