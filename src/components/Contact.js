@@ -1,5 +1,10 @@
 // src/components/Contact.js
 import React, { useState } from "react";
+import SendIcon from '@mui/icons-material/Send';
+import { Container, TextField, Button, Grid, Typography, Box } from '@mui/material';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+import PhoneIcon from '@mui/icons-material/Phone';
+import EmailIcon from '@mui/icons-material/Email';
 
 const Contact = () => {
     const [formData, setFormData] = useState({
@@ -66,21 +71,58 @@ const Contact = () => {
                     style={styles.textarea}
                     required
                 />
-                <button type="submit" style={styles.button} disabled={isSubmitting}>
+                <button type="submit" style={styles.button} disabled={isSubmitting} variant="contained"
+                        color="primary"
+                        fullWidth
+                        endIcon={<SendIcon />}
+                        >
                     {isSubmitting ? "Sending..." : "Send Message"}
                 </button>
             </form>
-            <div style={styles.infoSection}>
-                <div style={styles.infoItem}>
-                    <p>Our Location</p>
-                    <p>Villa Num 75 Lotissement la gare Mohammedia Maroc</p>
-                </div>
-                <div style={styles.infoItem}>
-                    <p>How Can We Help?</p>
-                    <p>+212 5 23 30 04 46</p>
-                    <p>3dmartfactory@gmail.com</p>
-                </div>
-            </div>
+
+            <Box textAlign="center" sx={{marginTop: 5}}>
+                <Typography variant="h5">Please feel free to get in touch with us !</Typography>
+            </Box>
+
+            <br/>
+
+            <Box
+                sx={{
+                    display: 'grid',
+                    gridTemplateColumns: 'repeat(2, 1fr)', // Ensures two columns
+                    justifyContent: 'space-around',
+                    marginTop: '50px',
+                    color: '#2d3748'
+                }}
+            >
+                {/* Box for "Our Location" */}
+                <Box sx={{ gridColumn: 1 }} textAlign="center">
+                    <Box display="flex" justifyContent="center" alignItems="center">
+                        <LocationOnIcon fontSize="medium" sx={{ color: '#2d3748', marginRight: '8px' }} />
+                        <Typography variant="h6">&nbsp;Our Location&nbsp;</Typography>
+                        <LocationOnIcon fontSize="medium" sx={{ color: '#2d3748', marginRight: '8px' }} />
+                    </Box>
+                    <Typography variant="subtitle2">
+                        Villa Num 75 Lotissement la gare<br />
+                        Mohammedia Maroc
+                    </Typography>
+                </Box>
+
+                {/* Box for "How Can We Help?" */}
+                <Box sx={{ gridColumn: 2 }} textAlign="center">
+                    <Box display="flex" justifyContent="center" alignItems="center">
+                        <PhoneIcon fontSize="medium" sx={{ color: '#2d3748', marginRight: '8px' }} />
+                        <Typography variant="h6">&nbsp;How Can We Help &nbsp;</Typography>
+                        <EmailIcon fontSize="medium" sx={{ color: '#2d3748', marginRight: '4px' }} />
+                    </Box>
+                    <Typography variant="subtitle2">
+                        +212 5 23 30 04 46<br />
+                        <Box display="flex" justifyContent="center" alignItems="center">
+                            3dsmartfactory@gmail.com
+                        </Box>
+                    </Typography>
+                </Box>
+            </Box>
         </div>
     );
 };
@@ -88,16 +130,24 @@ const Contact = () => {
 // Styles inline pour simplifier, tu peux les externaliser dans un fichier CSS si tu préfères
 const styles = {
     container: {
-        padding: "20px",
-        maxWidth: "600px",
+        paddingTop: "5px",
+        paddingBottom: "50px",
+        paddingRight: "100px",
+        paddingLeft: "100px",
+        maxWidth: "1000px",
         margin: "0 auto",
-        backgroundColor: "#f1f5f9",
+        backgroundColor: "#f0f0f0",
         borderRadius: "8px",
         boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)" // Added a subtle shadow
     },
     header: {
         textAlign: "center",
-        color: "#4FD1C5"
+        fontSize: 35,
+        fontWeight: 'bold',
+        background: 'linear-gradient(90deg, #212121, #68d391)',
+        WebkitBackgroundClip: 'text',
+        WebkitTextFillColor: 'transparent',
+        marginBottom: '20px',
     },
     subtext: {
         textAlign: "center",
