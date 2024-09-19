@@ -41,10 +41,9 @@ function App() {
             <div style={appStyles}>
                 {/* Navbar avec gestion du thème */}
                 <Navbar themeMode={themeMode} changeThemeMode={changeThemeMode} />
-
+                <br></br>
                 {/* Routes pour la navigation */}
                 <Routes>
-                    <Route path="/" element={<UploadViewComponent />} />
                     <Route path="/contact" element={<Contact />} />
                     <Route path="/home" element={<UploadViewComponent />} />
                 </Routes>

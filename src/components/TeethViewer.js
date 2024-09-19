@@ -19,7 +19,9 @@ function TeethViewer({ model }) {
         renderer.setClearColor(0x000000); // Arrière-plan noir
 
         // Append canvas
-        mountRef.current.appendChild(renderer.domElement);
+        if (mountRef.current) {
+            mountRef.current.appendChild(renderer.domElement);
+        }
 
         // Lumières
         const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
@@ -54,9 +56,11 @@ function TeethViewer({ model }) {
 
         animate();
 
+        // Nettoyage à la suppression du composant
         return () => {
-            if (renderer.domElement) {
-                mountRef.current.removeChild(renderer.domElement);
+            controls.dispose();  // Nettoyage des contrôles
+            if (mountRef.current && renderer.domElement) {
+                mountRef.current.removeChild(renderer.domElement); // Vérification stricte
             }
         };
     }, [model]);

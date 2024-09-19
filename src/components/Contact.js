@@ -34,7 +34,7 @@ const Contact = () => {
     };
 
     return (
-        <div className="contact-container" style={styles.container}>
+        <div className="contact-container" style={styles.container} >
             <h2 style={styles.header}>Contact Us</h2>
             <p style={styles.subtext}>
                 Got a technical issue? Want to send feedback about a beta feature? Let us know.
