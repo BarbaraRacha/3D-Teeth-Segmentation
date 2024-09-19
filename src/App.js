@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
+import Home from './components/Home';
+import Footer from './components/Footer';
 import UploadViewComponent from './components/UploadViewComponent';
 import Contact from './components/Contact';
 import AboutUs from './components/AboutUs'; // Import du composant AboutUs
@@ -42,13 +44,18 @@ function App() {
             <div style={appStyles}>
                 {/* Navbar avec gestion du thème */}
                 <Navbar themeMode={themeMode} changeThemeMode={changeThemeMode} />
-
+                <br></br>
                 {/* Routes pour la navigation */}
                 <Routes>
-                    <Route path="/" element={<UploadViewComponent />} />
                     <Route path="/contact" element={<Contact />} />
+
                     <Route path="/about" element={<AboutUs />} /> {/* Nouvelle route About Us */}
+
+                    <Route path="/home" element={<Home />} />
+
                 </Routes>
+                <br></br>
+                <Footer />
             </div>
         </Router>
     );
