@@ -1,7 +1,7 @@
 import logo from '../images/logo.png';
 import React, { useState } from 'react';
 import { AppBar, Toolbar, Typography, Box, Button, IconButton, Menu, MenuItem } from '@mui/material';
-
+import img_home from '../images/img_home.webp';
 
 const Home = () => {
     const [isHovered, setIsHovered] = useState(false);
@@ -44,7 +44,7 @@ const Home = () => {
             color: '#666',
         },
         teethSeg: {
-            backgroundColor: '#d1e7f5',
+            backgroundColor: 'black',
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'center',
@@ -63,6 +63,7 @@ const Home = () => {
         description: {
             fontSize: '18px',
             margin: '20px 0',
+            color: 'white'
         },
         button: {
             padding: '10px 20px',
@@ -119,15 +120,9 @@ const Home = () => {
                         Get started &nbsp;&nbsp;>
                     </button>
                 </div>
-                <div
-                    id="teeth-segmented"
-                    className="place-self-center lg:mt-0 lg:col-span-5 lg:flex h-full"
-                    style={{ cursor: 'pointer', touchAction: 'none', userSelect: 'none', WebkitTapHighlightColor: 'rgba(0, 0, 0, 0)' }}
-                >
-                    <canvas width="291" height="291" style={{ width: '100%', display: 'block' }}>
-                    </canvas>
+                <div style={styles.imageContainer}>
+                    <img src={img_home} alt="3D Teeth Segmentation" style={styles.image} />
                 </div>
-
             </section>
 
             {/* Section 2: Why TeethSeg */}
