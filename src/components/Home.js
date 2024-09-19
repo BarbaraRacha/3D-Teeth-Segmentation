@@ -1,10 +1,11 @@
+import React, { useState, useEffect } from 'react';
 import logo from '../images/logo.png';
-import React, { useState } from 'react';
-import { AppBar, Toolbar, Typography, Box, Button, IconButton, Menu, MenuItem } from '@mui/material';
 import img_home from '../images/img_home.webp';
 
 const Home = () => {
     const [isHovered, setIsHovered] = useState(false);
+
+    // Les styles pour chaque section
     const styles = {
         whyTeethSeg: {
             backgroundColor: '#e0eaf4',
@@ -21,27 +22,6 @@ const Home = () => {
             color: '#555',
             maxWidth: '800px',
             margin: '0 auto 40px',
-        },
-        features: {
-            display: 'flex',
-            justifyContent: 'center',
-            gap: '30px',
-        },
-        feature: {
-            width: '200px',
-            textAlign: 'center',
-        },
-        featureImage: {
-            width: '50px',
-            marginBottom: '15px',
-        },
-        featureTitle: {
-            fontSize: '20px',
-            marginBottom: '10px',
-        },
-        featureText: {
-            fontSize: '14px',
-            color: '#666',
         },
         teethSeg: {
             backgroundColor: 'black',
@@ -79,35 +59,73 @@ const Home = () => {
         buttonHover: {
             backgroundColor: '#005bb5', // Couleur sur hover
         },
-        getStarted: {
-            backgroundColor: '#007aff',
-            color: 'white',
-        },
-        seeDemo: {
-            backgroundColor: '#e0eaf4',
-            color: '#007aff',
-        },
         imageContainer: {
             textAlign: 'right',
         },
         image: {
             width: '300px',
         },
+        panel: {
+            backgroundColor: '#0078d7', // Bleu
+            padding: '50px',
+            textAlign: 'center',
+        },
+        textContainer: {
+            display: 'inline-block',
+            position: 'relative',
+            color: 'white',
+            fontSize: '2.5em',
+            fontWeight: 'bold',
+        },
+        animatedText: {
+            display: 'inline-block',
+            overflow: 'hidden',
+            whiteSpace: 'nowrap',
+            animation: 'typing 5s steps(50, end), blink-caret 0.75s step-end infinite',
+            borderRight: '3px solid white', // Pour simuler le curseur
+        },
+        demoButtonContainer: {
+            marginTop: '20px',
+            textAlign: 'center', // Centrer le bouton horizontalement
+        },
+        demoButton: {
+            backgroundColor: 'white',
+            color: '#0078d7',
+            padding: '10px 20px',
+            fontSize: '1em',
+            fontWeight: 'bold',
+            border: 'none',
+            borderRadius: '5px',
+            cursor: 'pointer',
+        },
+        demoButtonHover: {
+            backgroundColor: '#e0e0e0',
+        },
     };
+
+    useEffect(() => {
+        const globalStyles = `
+            @keyframes typing {
+                from { width: 0; }
+                to { width: 100%; }
+            }
+            @keyframes blink-caret {
+                from, to { border-color: transparent; }
+                50% { border-color: white; }
+            }
+        `;
+        const styleElement = document.createElement('style');
+        styleElement.innerHTML = globalStyles;
+        document.head.appendChild(styleElement);
+    }, []); // Exécution lors du montage du composant
 
     return (
         <div>
             {/* Section 1: TeethSeg */}
             <section style={styles.teethSeg}>
                 <div style={styles.content}>
-
                     <h1 style={styles.title}>
-                        <Box
-                            component="img"
-                            sx={{ height: 40, marginRight: 2 }}
-                            alt="Logo"
-                            src={logo}
-                        />
+                        <img src={logo} alt="Logo" style={{ height: '40px', marginRight: '10px' }} />
                         Teeth<span style={{ color: '#00bfa9' }}>Seg</span>
                     </h1>
                     <p style={styles.description}>
@@ -115,7 +133,8 @@ const Home = () => {
                     </p>
                     <button
                         style={{ ...styles.button, ...(isHovered ? styles.buttonHover : {}) }}
-                        onMouseEnter={() => setIsHovered(true)}  onMouseLeave={() => setIsHovered(false)}
+                        onMouseEnter={() => setIsHovered(true)}
+                        onMouseLeave={() => setIsHovered(false)}
                     >
                         Get started &nbsp;&nbsp;>
                     </button>
@@ -125,36 +144,23 @@ const Home = () => {
                 </div>
             </section>
 
-            {/* Section 2: Why TeethSeg */}
-            <section style={styles.whyTeethSeg}>
-                <h2 style={styles.whyTeethSegTitle}>Why TeethSeg</h2>
-                <p style={styles.whyTeethSegText}>
-                    3D tooth segmentation is an important task for digital orthodontics. Several Deep Learning methods have been proposed for automatic tooth segmentation from 3D dental models or intraoral scans.
-                </p>
-                <div style={styles.features}>
-                    <div style={styles.feature}>
-                        <img src="icon1.png" alt="Best AI Model" style={styles.featureImage} />
-                        <h3 style={styles.featureTitle}>Best AI Model</h3>
-                        <p style={styles.featureText}>
-                            To do our segmentation we are using one of the most accurate teeth segmentation models, the MeshSetNet.
-                        </p>
-                    </div>
-                    <div style={styles.feature}>
-                        <img src="icon2.png" alt="Fast Response" style={styles.featureImage} />
-                        <h3 style={styles.featureTitle}>Fast Response</h3>
-                        <p style={styles.featureText}>
-                            We optimized our API to be as fast and reliable as possible.
-                        </p>
-                    </div>
-                    <div style={styles.feature}>
-                        <img src="icon3.png" alt="Easy & Simple UI" style={styles.featureImage} />
-                        <h3 style={styles.featureTitle}>Easy & Simple UI</h3>
-                        <p style={styles.featureText}>
-                            We developed our UI to be as easy and simple to use, with 3D integration.
-                        </p>
-                    </div>
+            {/* Section 2: Animated Panel */}
+            <div style={styles.panel}>
+                <div style={styles.textContainer}>
+                    <p style={styles.animatedText}>
+                        Ready for the takeoff? Dentbird puts wings on your solution.
+                    </p>
                 </div>
-            </section>
+                <div style={styles.demoButtonContainer}>
+                    <button
+                        style={styles.demoButton}
+                        onMouseEnter={(e) => (e.target.style.backgroundColor = '#e0e0e0')}
+                        onMouseLeave={(e) => (e.target.style.backgroundColor = 'white')}
+                    >
+                        Book a demo
+                    </button>
+                </div>
+            </div>
         </div>
     );
 };
