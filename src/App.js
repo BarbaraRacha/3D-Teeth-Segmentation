@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 import UploadViewComponent from './components/UploadViewComponent';
 import Contact from './components/Contact';
 
@@ -47,6 +48,8 @@ function App() {
                     <Route path="/contact" element={<Contact />} />
                     <Route path="/home" element={<UploadViewComponent />} />
                 </Routes>
+                <br></br>
+                <Footer />
             </div>
         </Router>
     );

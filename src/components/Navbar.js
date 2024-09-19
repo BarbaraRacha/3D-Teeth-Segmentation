@@ -53,7 +53,7 @@ function Navbar({ themeMode, changeThemeMode }) { // Recevoir changeThemeMode co
                         flexGrow: 1, // Prendre tout l'espace pour centrer
                     }}
                 >
-                    TeethSeg
+                    Teeth<span style={{ color: '#00bfa9' }}>Seg</span>
                 </Typography>
 
                 <div>
