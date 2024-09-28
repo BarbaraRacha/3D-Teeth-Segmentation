@@ -68,8 +68,12 @@ function Navbar({ themeMode, changeThemeMode }) { // Recevoir changeThemeMode co
                         <Description sx={{ marginRight: 1 }} /> Docs
                     </Button>
                     <Button sx={{ color: themeMode === 'dark' ? '#fff' : '#333', fontSize: 18, marginLeft: 10, fontFamily: 'Verdana' }}>
-                        <Info sx={{ marginRight: 1 }} /> About
+                        <Info sx={{ marginRight: 1 }} />
+                        <Link to="/about" style={{ color: 'inherit', textDecoration: 'none' }}>
+                            About
+                        </Link>
                     </Button>
+
                     <Button sx={{ color: themeMode === 'dark' ? '#fff' : '#333', fontSize: 18, marginLeft: 10, fontFamily: 'Verdana' }}>
                         <ContactMail sx={{ marginRight: 1 }} />
                         <Link to="/contact" style={{ color: 'inherit', textDecoration: 'none' }}> {/* Ensure proper link styling */}

@@ -5,6 +5,7 @@ import Home from './components/Home';
 import Footer from './components/Footer';
 import UploadViewComponent from './components/UploadViewComponent';
 import Contact from './components/Contact';
+import AboutUs from './components/AboutUs'; // Import du composant AboutUs
 
 function App() {
     // const [model, setModel] = useState(null);  // Pour gérer le modèle 3D
@@ -47,7 +48,13 @@ function App() {
                 {/* Routes pour la navigation */}
                 <Routes>
                     <Route path="/contact" element={<Contact />} />
+
+                    <Route path="/about" element={<AboutUs />} /> {/* Nouvelle route About Us */}
+
                     <Route path="/home" element={<Home />} />
+
+                    <Route path="/" element={<UploadViewComponent />} />
+
                 </Routes>
                 <br></br>
                 <Footer />

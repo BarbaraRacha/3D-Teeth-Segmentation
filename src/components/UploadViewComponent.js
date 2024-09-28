@@ -24,10 +24,17 @@ function UploadViewComponent() {
                 </div>
 
                 {/* Affichage du modèle 3D */}
-                <TeethViewer model={model} />
+
+                <div style={{ marginBottom: '32px' }}>
+                    {model && <h2>Model loaded: {model.name}</h2>}
+                    <TeethViewer model={model} />
+                </div>
 
                 {/* Résultats de la segmentation */}
+                <div style={{ marginBottom: '32px' }}>
+
                 <SegmentationResults />
+                </div>
             </Container>
         </div>
     );
