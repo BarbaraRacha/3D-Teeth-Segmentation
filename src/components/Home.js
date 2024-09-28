@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import logo from '../images/logo.png';
 import img_home from '../images/img_home.webp';
+import { Link } from 'react-router-dom';
+
 
 const Home = () => {
     const [isHovered, setIsHovered] = useState(false);
@@ -164,14 +166,14 @@ const Home = () => {
                     </p>
                 </div>
                 <div style={styles.demoButtonContainer}>
-                    <button
-                        style={styles.demoButton}
-                        onMouseEnter={(e) => (e.target.style.backgroundColor = '#e0e0e0')}
-                        onMouseLeave={(e) => (e.target.style.backgroundColor = 'white')}
+                    <Link to="/" style={styles.demoButton}
+                          onMouseEnter={(e) => (e.target.style.backgroundColor = '#e0e0e0')}
+                          onMouseLeave={(e) => (e.target.style.backgroundColor = 'white')}
                     >
                         Book a demo
-                    </button>
+                    </Link>
                 </div>
+
             </div>
         </div>
     );

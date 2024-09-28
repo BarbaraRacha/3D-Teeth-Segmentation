@@ -53,6 +53,8 @@ function App() {
 
                     <Route path="/home" element={<Home />} />
 
+                    <Route path="/" element={<UploadViewComponent />} />
+
                 </Routes>
                 <br></br>
                 <Footer />
