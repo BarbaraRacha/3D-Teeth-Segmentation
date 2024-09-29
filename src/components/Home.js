@@ -166,7 +166,7 @@ const Home = () => {
                     </p>
                 </div>
                 <div style={styles.demoButtonContainer}>
-                    <Link to="/" style={styles.demoButton}
+                    <Link to="/upload" style={styles.demoButton}
                           onMouseEnter={(e) => (e.target.style.backgroundColor = '#e0e0e0')}
                           onMouseLeave={(e) => (e.target.style.backgroundColor = 'white')}
                     >

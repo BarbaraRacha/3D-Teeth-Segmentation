@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import UploadForm from './UploadForm';
 import TeethViewer from './TeethViewer';
-import SegmentationResults from './SegmentationResults';
-import { Container } from '@mui/material';
+import { Container, Button } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 function UploadViewComponent() {
     const [model, setModel] = useState(null);  // Pour gérer le modèle 3D
@@ -23,18 +23,28 @@ function UploadViewComponent() {
                     <UploadForm onModelLoaded={handleModelLoaded} />
                 </div>
 
-                {/* Affichage du modèle 3D */}
-
+                {/* Affichage de l'image 3D */}
                 <div style={{ marginBottom: '32px' }}>
                     {model && <h2>Model loaded: {model.name}</h2>}
                     <TeethViewer model={model} />
                 </div>
 
-                {/* Résultats de la segmentation */}
                 <div style={{ marginBottom: '32px' }}>
-
-                <SegmentationResults />
                 </div>
+
+                {/* Bouton "Apply Segmentation" */}
+                <div align={'center'}>
+                    <Link to="/segmentation" style={{ textDecoration: 'none' }}>
+                        <Button style={{ height: 50, width: 300 }}
+                                variant="contained"
+                                color="primary"
+                        >
+                            Apply Segmentation
+                        </Button>
+                    </Link>
+                </div>
+
+
             </Container>
         </div>
     );

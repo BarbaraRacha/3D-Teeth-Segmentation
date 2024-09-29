@@ -6,6 +6,7 @@ import Footer from './components/Footer';
 import UploadViewComponent from './components/UploadViewComponent';
 import Contact from './components/Contact';
 import AboutUs from './components/AboutUs'; // Import du composant AboutUs
+import SegmentationResults from './components/SegmentationResults';
 
 function App() {
     // const [model, setModel] = useState(null);  // Pour gérer le modèle 3D
@@ -53,7 +54,9 @@ function App() {
 
                     <Route path="/home" element={<Home />} />
 
-                    <Route path="/" element={<UploadViewComponent />} />
+                    <Route path="/upload" element={<UploadViewComponent />} />
+
+                    <Route path="/segmentation" element={<SegmentationResults />} />
 
                 </Routes>
                 <br></br>
