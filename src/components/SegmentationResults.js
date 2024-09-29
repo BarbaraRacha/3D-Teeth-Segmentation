@@ -6,8 +6,12 @@ import vtkRenderWindow from '@kitware/vtk.js/Rendering/Core/RenderWindow';
 import vtkRenderWindowInteractor from '@kitware/vtk.js/Rendering/Core/RenderWindowInteractor';
 import { Container, Button } from '@mui/material';
 import { Link, useLocation } from 'react-router-dom';
+import * as THREE from 'three';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+import RotateRightIcon from '@mui/icons-material/RotateRight';
 
 const SegmentationResults = () => {
+    const mountRef = useRef(null);
     const containerRef = useRef(null);
     const location = useLocation();
     const { file } = location.state || {}; // Récupérer le chemin du fichier passé
@@ -45,10 +49,19 @@ const SegmentationResults = () => {
     return (
         <Container>
             <h2>Segmentation Results</h2>
-            <div ref={containerRef} style={{ width: '600px', height: '600px', margin: 'auto' }}></div>
+
+            <div style={{ position: 'relative', width: '60vw', height: '60vh', margin: '0 auto', marginTop: '20px', border: '1px solid #ccc' }}>
+                <div ref={mountRef} style={{ width: '100%', height: '100%', background: 'black' }} />
+
+                {/* Icône de rotation */}
+                <div style={{ position: 'absolute', top: '10px', right: '10px', display: 'flex', alignItems: 'center', background: 'rgba(255, 255, 255, 0.7)', padding: '5px', borderRadius: '5px' }}>
+                    <RotateRightIcon style={{ marginRight: '5px' }} />
+                    <span style={{ fontSize: '12px' }}>Rotate the model</span>
+                </div>
+            </div>
 
             {/* Bouton pour télécharger une nouvelle image */}
-            <div align={'center'}>
+            <div align={'center'} style={{marginTop: 40, marginBottom: 20}}>
                 <Link to="/upload" style={{ textDecoration: 'none' }}>
                     <Button style={{ height: 50, width: 300 }}
                             variant="contained"
