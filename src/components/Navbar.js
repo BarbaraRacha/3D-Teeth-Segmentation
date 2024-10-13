@@ -60,7 +60,7 @@ function Navbar({ themeMode, changeThemeMode }) { // Recevoir changeThemeMode co
                     {/* Boutons de navigation */}
                     <Button sx={{ color: themeMode === 'dark' ? '#fff' : '#333', fontSize: 18, marginLeft: -100, fontFamily: 'Verdana' }}>
                         <Home sx={{ marginRight: 1 }} />
-                        <Link to="/home" style={{ color: 'inherit', textDecoration: 'none' }}>
+                        <Link to="/" style={{ color: 'inherit', textDecoration: 'none' }}>
                             Home
                         </Link>
                     </Button>

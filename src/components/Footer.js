@@ -17,8 +17,11 @@ function Footer() {
                 padding: '10px 40px',
                 backgroundColor: '#f8f9fa',
                 borderTop: '1px solid #ddd',
-                marginTop: 'auto',
                 height: '60px',
+                position: 'fixed', // Fixe le Footer
+                bottom: 0, // Positionne le Footer en bas
+                left: 0, // Aligne le Footer à gauche
+                right: 0, // Aligne le Footer à droite
             }}
         >
             {/* Logo and text */}

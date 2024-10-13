@@ -9,7 +9,7 @@ import reactLogo from '../images/react-logo.png';
 import muiLogo from '../images/mui-logo.png';
 import pythonLogo from '../images/python-50.png';
 import logo1 from '../images/fatima_image.jpg'; // Use your uploaded image path
-import logo2 from '../images/racha_image.jpg';
+import logo2 from '../images/racha_image.jpeg';
 import jsLogo from '../images/icons8-js-50.png';
 
 function AboutUs() {
@@ -80,7 +80,7 @@ function AboutUs() {
             </Grid>
 
             {/* Technologies Used Section */}
-            <Typography variant="h5" gutterBottom textAlign="center" sx={{ marginTop: 6 }}>
+            <Typography variant="h5" gutterBottom textAlign="center" sx={{ marginTop: 15 }}>
                 Technologies Used
             </Typography>
             <Grid container spacing={2} justifyContent="center" sx={{ marginTop: 2 }}>

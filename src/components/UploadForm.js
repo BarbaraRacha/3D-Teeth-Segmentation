@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { Button, TextField } from '@mui/material';
-//import * as THREE from 'three';
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader';
 
-function UploadForm({ onModelLoaded }) {
+function UploadForm({ onModelLoaded, onFileUploaded }) {
     const [file, setFile] = useState(null);
 
     const handleFileChange = (event) => {
@@ -27,6 +26,9 @@ function UploadForm({ onModelLoaded }) {
                 onModelLoaded(object);
             };
             reader.readAsText(file);
+
+            // Appelle la fonction pour informer le composant parent que le fichier a été téléchargé
+            onFileUploaded(file);
         }
     };
 
@@ -38,7 +40,7 @@ function UploadForm({ onModelLoaded }) {
                 inputProps={{ accept: '.obj,.json' }}
                 style={{ flex: 1, backgroundColor: "white" }}
             />
-            <Button sx={{height: 55, width: 150, fontSize: 17}} type="submit" variant="contained" color="primary">
+            <Button sx={{ height: 55, width: 150, fontSize: 17 }} type="submit" variant="contained" color="primary">
                 Upload
             </Button>
         </form>

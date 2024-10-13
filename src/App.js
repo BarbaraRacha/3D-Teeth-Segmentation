@@ -52,7 +52,7 @@ function App() {
 
                     <Route path="/about" element={<AboutUs />} /> {/* Nouvelle route About Us */}
 
-                    <Route path="/home" element={<Home />} />
+                    <Route path="/" element={<Home />} />
 
                     <Route path="/upload" element={<UploadViewComponent />} />
 
